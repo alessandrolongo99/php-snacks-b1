@@ -62,6 +62,7 @@ $games = [
         }
         ?>
     </ul>
+    <hr>
 
     <!-- **************************** -->
 
@@ -71,19 +72,36 @@ $games = [
         Se tutto è ok stampare "Accesso riuscito", altrimenti "Accesso negato"</p>
 
     <?php
-        $name = $_GET['name'];
-        $age = $_GET['age'];
-        $mail = $_GET['mail'];
+    $name = $_GET['name'];
+    $age = $_GET['age'];
+    $mail = $_GET['mail'];
 
-        echo '<h4>Nome: '.$name.'</h4>';
-        echo '<h4>Eta: '.$age.'</h4>';
-        echo '<h4>Mail: '.$mail.'</h4>';
+    echo '<h4>Nome: ' . $name . '</h4>';
+    echo '<h4>Eta: ' . $age . '</h4>';
+    echo '<h4>Mail: ' . $mail . '</h4>';
 
-        if ((strlen($name) > 3) && (is_numeric($age)) && ((strpos($mail, '@') > 0) && (strpos($mail, '.') > 3))){
-            echo '<h4>Accesso riuscito</h4>';
-        }else{
-            echo '<h4>Accesso negato</h4>';
+    if ((strlen($name) > 3) && (is_numeric($age)) && ((strpos($mail, '@') > 0) && (strpos($mail, '.') > 3))) {
+        echo '<h4>Accesso riuscito</h4>';
+    } else {
+        echo '<h4>Accesso negato</h4>';
+    }
+    ?>
+    <hr>
+
+    <!-- **************************** -->
+
+    <h2>Snack 3</h2>
+    <p>Creare un array con 15 numeri casuali, tenendo conto che l'array non dovrà contenere lo stesso numero più di una volta</p>
+
+    <?php
+        $numbers = [];
+        while (count($numbers) < 15) {
+            $randomNumber = rand(1, 15);
+            if (!in_array($randomNumber, $numbers)) {
+                $numbers[] = $randomNumber;
+            }
         }
+        var_dump($numbers);
     ?>
 
 </body>

@@ -54,11 +54,11 @@ $posts = [
     <h1>Posts</h1>
     <ul>
         <?php
-        foreach ($posts as $key => $post) {
+        foreach ($posts as $key => $date) {
             echo '<li>' . $key . '</li>';
             echo '<ul>';
-            foreach ($post as $element) {
-                echo '<li>' . $element . ': </li>';
+            foreach ($date as $post) {
+                echo '<li>' . $post['title'] . ' di ' . $post['author'] .': '.$post['text']. '</li>';
             }
             echo '</ul>';
         }
@@ -69,7 +69,7 @@ $posts = [
     <!-- ********************************************************* -->
 
     <h1>Party</h1>
-    <form action="./snack1.php">
+    <form action="./snack1.php" method="get">
         <input type="text" name="name">
         <input type="submit" value="vai">
     </form>

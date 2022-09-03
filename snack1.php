@@ -9,18 +9,29 @@
 </head>
 
 <?php
-    $people = [
-        'alessandro',
-        'margherita',
-        'federico',
-    ];
+$people = [
+    'alessandro',
+    'margherita',
+    'federico',
+];
+
+$success = false;
 ?>
 
 <body>
     <h1>
         <?php
-            if()
-        ?>
+        for ($i = 0; $i < count($people); $i++) {
+            if ($_GET['name'] == $people[$i]) {
+                $success = true;
+            }
+        }
+
+        if ($success) { ?>
+            <h2>OK</h2>
+        <?php } else { ?>
+            <h2>KO</h2>
+        <?php } ?>
     </h1>
 </body>
 

@@ -94,16 +94,99 @@ $games = [
     <p>Creare un array con 15 numeri casuali, tenendo conto che l'array non dovrà contenere lo stesso numero più di una volta</p>
 
     <?php
-        $numbers = [];
-        while (count($numbers) < 15) {
-            $randomNumber = rand(1, 15);
-            if (!in_array($randomNumber, $numbers)) {
-                $numbers[] = $randomNumber;
-            }
+    $numbers = [];
+    while (count($numbers) < 15) {
+        $randomNumber = rand(1, 15);
+        if (!in_array($randomNumber, $numbers)) {
+            $numbers[] = $randomNumber;
         }
-        var_dump($numbers);
+    }
+    var_dump($numbers);
+    ?>
+    <hr>
+
+    <!-- **************************** -->
+
+    <h2>Snack 4</h2>
+    <p>Prendere un paragrafo abbastanza lungo, contenente diverse frasi. Prendere il paragrafo e suddividerlo in tanti paragrafi.
+        Ogni punto un nuovo paragrafo.</p>
+
+    <?php
+    $paragraph = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci laboriosam iure dignissimos excepturi quaerat illo earum ipsam ut inventore 
+        voluptate porro architecto non sunt rerum, quisquam eius iusto, praesentium quas?';
+
+    $splitted = explode('.', $paragraph);
     ?>
 
+    <h3>Paragrafo originale: </h3>
+    <p><?php echo $paragraph ?></p>
+
+    <h3>Paragrafo splittato: </h3>
+    <ol>
+        <?php for ($i = 0; $i < count($splitted); $i++) { ?>
+            <li>
+                <?php
+                echo $splitted[$i];
+                ?>
+            </li>
+        <?php } ?>
+    </ol>
+    <hr>
+
+    <!-- **************************** -->
+
+    <h2>Snack 5</h2>
+    <p>Creare un array contenente qualche alunno di un'ipotetica classe.
+        Ogni alunno avrà Nome, Cognome e un array contenente i suoi voti scolastici.
+        Stampare Nome, Cognome e la media dei voti di ogni alunno.</p>
+
+    <?php
+    $class = [
+        [
+            'name' => 'Alessandro',
+            'surname' => 'Longo',
+            'votes' => [
+                'english' => 8,
+                'math' => 9,
+                'chemistry' => 6
+            ]
+        ],
+        [
+            'name' => 'Federico',
+            'surname' => 'Corazzari',
+            'votes' => [
+                'english' => 8,
+                'math' => 8,
+                'chemistry' => 7
+            ]
+        ],
+        [
+            'name' => 'Giovanna',
+            'surname' => 'Ottoboni',
+            'votes' => [
+                'english' => 6,
+                'math' => 6,
+                'chemistry' => 6
+            ]
+        ],
+    ];
+    ?>
+
+    <ul>
+        <?php for ($i = 0; $i < count($class); $i++) { ?>
+            <li>
+                <?php
+                    echo $class[$i]['name'] . ' ' . $class[$i]['surname'] . ': ';
+                    $studentVotes = array_values($class[$i]['votes']);
+                    $average = 0;
+                    for ($k = 0; $k < count($studentVotes); $k++) {
+                        $average += $studentVotes[$k];
+                    }
+                    echo round($average / count($studentVotes), 2);
+                ?>
+            </li>
+        <?php } ?>
+    </ul>
 </body>
 
 </html>
